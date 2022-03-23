@@ -167,7 +167,6 @@ if __name__ == '__main__':
     plt.title('Quick sort O(nlog(n))')
 
     plt.show()
-    print("mekko")
 
 
 
