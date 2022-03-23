@@ -45,7 +45,7 @@ def selection_sort_hybrid(arr,start,end):
         if (imin != i):
             arr[imin], arr[i] = arr[i], arr[imin]
     print('selection',arr)
-    return arr
+
 
 # Quick sort implementation
 def randomized_partition(array, start, end):
@@ -120,6 +120,17 @@ def merge_sort_hybrid(A, start, end, Threshold):  # start:first index of the arr
         hybrid_merge(A, mid + 1, end, Threshold)
         merge(A, start, mid, end)
 
+def find_kth_smallest(A,start,end,k):
+  if(k>0 and k<=len(A)):
+    pindex = partition(A, start, end)
+    if(pindex == k-1):
+      return A[pindex]
+    elif(pindex < k-1):
+      return find_kth_smallest(A,pindex+1,end,k)
+    else:
+      return find_kth_smallest(A,start,pindex-1,k)
+  else:
+    print("enter a valid k")
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     sizes = [1000, 2000, 5000, 10000]
@@ -128,8 +139,9 @@ if __name__ == '__main__':
     merge_time = []
     quick_time = []
     arr=[208,19,25,14,80,40,5,60,55,22]
-    hybrid_merge(arr,0,9,3)
-    print(arr)
+    print(find_kth_smallest(arr,0,len(arr)-1,3))
+    #hybrid_merge(arr,0,9,3)
+    #print(arr)
     # for size in sizes:
     #     array = generate_fns(size)
     #     insertion_array = copy.deepcopy(array)
