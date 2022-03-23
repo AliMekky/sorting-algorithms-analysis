@@ -35,6 +35,17 @@ def selection_sort(arr):
             arr[imin], arr[i] = arr[i], arr[imin]
     print('selection',arr)
 
+def selection_sort_hybrid(arr,start,end):
+    #n = len(arr)
+    for i in range(start,end):
+        imin = i
+        for j in range(i + 1, end+1):
+            if (arr[j] < arr[imin]):
+                imin = j
+        if (imin != i):
+            arr[imin], arr[i] = arr[i], arr[imin]
+    print('selection',arr)
+    return arr
 
 # Quick sort implementation
 def randomized_partition(array, start, end):
@@ -97,11 +108,11 @@ def merge_sort(A, start, end):  # start:first index of the array,end : last inde
 def hybrid_merge(arr,start,end,Threshold):
     n=end-start+1
     if n<=Threshold:
-        arr1=arr[start:end+1]
-        selection_sort(arr1)
-        arr[start:end+1]=arr1
+        #arr1=arr[start:end+1]
+        selection_sort_hybrid(arr,start,end)
+        #arr[start:end+1]=arr1
     else:
-        return merge_sort_hybrid(arr,start,end,Threshold)
+        merge_sort_hybrid(arr,start,end,Threshold)
 def merge_sort_hybrid(A, start, end, Threshold):  # start:first index of the array,end : last index in the array
     if (start < end):
         mid = (start + end) // 2
