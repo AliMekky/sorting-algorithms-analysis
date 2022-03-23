@@ -91,7 +91,7 @@ def merge_sort(A,start,end): #start:first index of the array,end : last index in
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    sizes=[1000,25000,50000,100000]
+    sizes=[1000,2000,5000,10000]
     insertion_time=[]
     selection_time=[]
     merge_time=[]
