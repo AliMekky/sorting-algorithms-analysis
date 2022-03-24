@@ -3,6 +3,8 @@ import random as rd
 import numpy as np
 import time
 import matplotlib.pyplot as plt
+import sys
+sys.setrecursionlimit(10**6)
 
 
 # function to generate random array
@@ -33,7 +35,7 @@ def selection_sort(arr):
                 imin = j
         if (imin != i):
             arr[imin], arr[i] = arr[i], arr[imin]
-    print('selection',arr)
+    #print('selection',arr)
 
 def selection_sort_hybrid(arr,start,end):
     #n = len(arr)
@@ -44,7 +46,7 @@ def selection_sort_hybrid(arr,start,end):
                 imin = j
         if (imin != i):
             arr[imin], arr[i] = arr[i], arr[imin]
-    print('selection',arr)
+    #print('selection',arr)
 
 
 # Quick sort implementation
@@ -113,6 +115,8 @@ def hybrid_merge(arr,start,end,Threshold):
         #arr[start:end+1]=arr1
     else:
         merge_sort_hybrid(arr,start,end,Threshold)
+
+
 def merge_sort_hybrid(A, start, end, Threshold):  # start:first index of the array,end : last index in the array
     if (start < end):
         mid = (start + end) // 2
@@ -132,84 +136,126 @@ def find_kth_smallest(A,start,end,k):
   else:
     print("enter a valid k")
 # Press the green button in the gutter to run the script.
+
+
 if __name__ == '__main__':
-    sizes = [1000, 2000, 5000, 10000]
+    sizes = [1000, 25000, 50000, 100000]
     insertion_time = []
     selection_time = []
     merge_time = []
     quick_time = []
-    arr=[208,19,25,14,80,40,5,60,55,22]
-    print(find_kth_smallest(arr,0,len(arr)-1,3))
+    #arr=[208,19,25,14,80,40,5,60,55,22]
+    #print(find_kth_smallest(arr,0,len(arr)-1,3))
+    print("Do you want to find kth smallest element in certain array")
+    print("Enter 1 for yes, 0 for no")
+    response = int(input())
+    while(response != 0 and response != 1):
+        print("Enter 1 for yes, 0 for no")
+        response = int(input())
+    if(response == 1):
+        lst = []
+        k = int(input("Enter K value : "))
+        n = int(input("Enter number of elements : "))
+        for i in range(0, n):
+            ele = int(input())
+            lst.append(ele)
+        print(find_kth_smallest(lst,0,len(lst)-1,k))
+
+
+    print("Do you want to test hybrid merge sort")
+    print("Enter 1 for yes, 0 for no")
+    response = int(input())
+    while (response != 0 and response != 1):
+        print("Enter 1 for yes, 0 for no")
+        response = int(input())
+    if (response == 1):
+        lst = []
+        threshold = int(input("Enter threshold value : "))
+        n = int(input("Enter number of elements : "))
+        for i in range(0, n):
+            ele = int(input())
+            lst.append(ele)
+        merge_sort_hybrid(lst, 0, len(lst) - 1, threshold)
+        print("array after sorting:")
+        print(lst)
     #hybrid_merge(arr,0,9,3)
     #print(arr)
-    # for size in sizes:
-    #     array = generate_fns(size)
-    #     insertion_array = copy.deepcopy(array)
-    #     selection_array = copy.deepcopy(array)
-    #     merge_array = copy.deepcopy(array)
-    #     quick_array = copy.deepcopy(array)
-    #
-    #     ts = time.time()
-    #     insertion_sort(insertion_array)
-    #     tf = time.time()
-    #     insertion_time.append(round(tf - ts, 4))
-    #
-    #     ts = time.time()
-    #     selection_sort(selection_array)
-    #     tf = time.time()
-    #     selection_time.append(round(tf - ts, 4))
-    #
-    #     ts = time.time()
-    #     quick_sort(quick_array, 0, len(quick_array) - 1)
-    #     tf = time.time()
-    #     quick_time.append(round(tf - ts, 4))
-    #
-    #     ts = time.time()
-    #     merge_sort(merge_array, 0, len(merge_array) - 1)
-    #     tf = time.time()
-    #     merge_time.append(round(tf - ts, 4))
-    #
-    # print('selection', selection_time)
-    # print('insertion', insertion_time)
-    # print('merge', merge_time)
-    # print('quick', quick_time)
-    #
-    # fig = plt.figure(figsize=(12, 10))
-    # grid = plt.GridSpec(2, 4, wspace=0.6, hspace=0.7)
-    # plt.subplot(grid[0, 0:])
-    # plt.plot(sizes, insertion_time, label="Insertion sort")
-    # plt.plot(sizes, selection_time, label="Selection sort")
-    # plt.plot(sizes, merge_time, label="Merge sort")
-    # plt.plot(sizes, quick_time, label="Quick sort")
-    # plt.xlabel('Random array sizes')
-    # plt.ylabel('Running time(secs)')
-    # plt.title('analysis of different sorting algorithms')
-    # plt.legend()
-    #
-    # plt.subplot(grid[1, 0])
-    # plt.plot(sizes, insertion_time)
-    # plt.xlabel('Random array sizes')
-    # plt.ylabel('Running time(secs)')
-    # plt.title('Insertion sort O(n^2)')
-    #
-    # plt.subplot(grid[1, 1])
-    # plt.plot(sizes, selection_time, 'tab:orange')
-    # plt.xlabel('Random array sizes')
-    # plt.ylabel('Running time(secs)')
-    # plt.title('Selection sort O(n^2)')
-    #
-    # plt.subplot(grid[1, 2])
-    # plt.plot(sizes, merge_time, 'g')
-    # plt.xlabel('Random array sizes')
-    # plt.ylabel('Running time(secs)')
-    # plt.title('Merge sort O(nlog(n))')
-    #
-    # plt.subplot(grid[1, 3])
-    # # plt.plot(sizes, quick_time, 'r')
-    # # plt.xlabel('Random array sizes')
-    # # plt.ylabel('Running time(secs)')
-    # # plt.title('Quick sort O(nlog(n))')
-    #
-    #  plt.show()
+
+    print("Do you want to analyze running time of sorting algorithms")
+    print("Enter 1 for yes, 0 for no")
+    response = int(input())
+    while (response != 0 and response != 1):
+        print("Enter 1 for yes, 0 for no")
+        response = int(input())
+    if(response == 1):
+         for size in sizes:
+            array = generate_fns(size)
+            insertion_array = copy.deepcopy(array)
+            selection_array = copy.deepcopy(array)
+            merge_array = copy.deepcopy(array)
+            quick_array = copy.deepcopy(array)
+
+            ts = time.time()
+            insertion_sort(insertion_array)
+            tf = time.time()
+            insertion_time.append(round(tf - ts,4))
+
+            ts = time.time()
+            selection_sort(selection_array)
+            tf = time.time()
+            selection_time.append(round(tf - ts,4))
+
+            ts = time.time()
+            quick_sort(quick_array, 0, len(quick_array) - 1)
+            tf = time.time()
+            quick_time.append(round(tf - ts,4))
+
+            ts = time.time()
+            merge_sort(merge_array, 0, len(merge_array) - 1)
+            tf = time.time()
+            merge_time.append(round(tf - ts,4))
+
+        # print('selection', selection_time)
+        # print('insertion', insertion_time)
+        # print('merge', merge_time)
+        # print('quick', quick_time)
+
+         fig = plt.figure(figsize=(12, 10))
+         grid = plt.GridSpec(2, 4, wspace=0.6, hspace=0.7)
+         plt.subplot(grid[0, 0:])
+         plt.plot(sizes, insertion_time, label="Insertion sort")
+         plt.plot(sizes, selection_time, label="Selection sort")
+         plt.plot(sizes, merge_time, label="Merge sort")
+         plt.plot(sizes, quick_time, label="Quick sort")
+         plt.xlabel('Random array sizes')
+         plt.ylabel('Running time(secs)')
+         plt.title('analysis of different sorting algorithms')
+         plt.legend()
+
+         plt.subplot(grid[1, 0])
+         plt.plot(sizes, insertion_time)
+         plt.xlabel('Random array sizes')
+         plt.ylabel('Running time(secs)')
+         plt.title('Insertion sort O(n^2)')
+
+         plt.subplot(grid[1, 1])
+         plt.plot(sizes, selection_time, 'tab:orange')
+         plt.xlabel('Random array sizes')
+         plt.ylabel('Running time(secs)')
+         plt.title('Selection sort O(n^2)')
+
+         plt.subplot(grid[1, 2])
+         plt.plot(sizes, merge_time, 'g')
+         plt.xlabel('Random array sizes')
+         plt.ylabel('Running time(secs)')
+         plt.title('Merge sort O(nlog(n))')
+
+         plt.subplot(grid[1, 3])
+         plt.plot(sizes, quick_time, 'r')
+         plt.xlabel('Random array sizes')
+         plt.ylabel('Running time(secs)')
+         plt.title('Quick sort O(nlog(n))')
+
+         plt.show()
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
