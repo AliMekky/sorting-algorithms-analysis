@@ -3,11 +3,13 @@ Part 1 :
 Implementation of two types of sorting algorithms whose
 complexity is O(n^2) : 
 - Selection sort 
-- Insertionn sort
+- Insertion sort
+
 And another two types of sorting algorithms whose complexity 
 is O(nlgn)
 - Merge sort 
 - Quick sort
+
 Then passing 4 random arrays of different sizes 
 (1000,25000,50000,100000) each array is passed 4 times to the 
 4 sorting functions.
