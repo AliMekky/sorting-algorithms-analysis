@@ -23,3 +23,5 @@ merge sort till reaching a threshold value .then , the
 program sorts the subarray by selection sort.
 - Finding kth smallest element in certain array using 
 partition function.
+
+credits to Ali Mekky, Seif Tahtawy and Moahmed Alaa
