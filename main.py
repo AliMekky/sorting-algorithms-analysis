@@ -9,7 +9,7 @@ sys.setrecursionlimit(10**6)
 
 # function to generate random array
 def generate_fns(size):
-    array = np.random.randint(0, 100, size)
+    array = np.random.randint(0, 10000, size)
     return array
 
 
